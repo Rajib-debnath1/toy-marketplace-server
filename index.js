@@ -65,7 +65,15 @@ const client = new MongoClient(uri, {
 
             })
 
-          
+            app.delete("/deleteToy",async(req,res)=>{
+                const id = req.body._id;
+                console.log(id);
+                const deleteToy = await toyCollections.deleteOne({_id : new ObjectId(id)})
+                res.send(deleteToy)
+            })
+
+           
+
 
         }
         server().catch(console.dir)
