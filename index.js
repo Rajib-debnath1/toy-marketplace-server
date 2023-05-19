@@ -46,6 +46,16 @@ const client = new MongoClient(uri, {
             })
 
 
+            app.get("/toy/:category",async(req,res)=>{
+                const {category} = req.params;
+                console.log(category,"category");
+                const getCategory = await toyCollections.find({category:category}).limit(20).toArray()
+                res.send(getCategory)
+
+            })
+
+
+
         }
         server().catch(console.dir)
 
