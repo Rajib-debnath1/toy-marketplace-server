@@ -78,7 +78,19 @@ const client = new MongoClient(uri, {
                 const filter = {_id:new ObjectId(_id)}
                 const options = { upsert: true };
                 // console.log(data);
-               
+                const updateDoc ={
+                    $set:{
+                        price:priceU,
+                        rating:ratingU,
+                        quantity:quantityU,
+                        details:detailsU
+                    }
+                }
+                
+                console.log(updateDoc);
+                
+                const resultToy = await toyCollections.updateOne(filter,updateDoc,options)
+                res.send(resultToy)
 
             })
 
