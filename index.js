@@ -72,7 +72,16 @@ const client = new MongoClient(uri, {
                 res.send(deleteToy)
             })
 
-           
+            app.put('/updateToy',async(req,res)=>{
+                const data = req.body;
+                const {_id,priceU,ratingU,quantityU,detailsU} = data
+                const filter = {_id:new ObjectId(_id)}
+                const options = { upsert: true };
+                // console.log(data);
+               
+
+            })
+
 
 
         }
