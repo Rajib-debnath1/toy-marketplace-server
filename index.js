@@ -55,6 +55,17 @@ const client = new MongoClient(uri, {
             })
 
 
+            app.get("/myToy/:email",async(req,res)=>{
+                const {email} = req.params;
+                console.log(email,"category");
+                const query = {seller:email}
+                console.log(query);
+                const getoyIdData = await toyCollections.find(query).toArray()
+                res.send(getoyIdData)
+
+            })
+
+          
 
         }
         server().catch(console.dir)
