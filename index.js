@@ -37,8 +37,13 @@ const client = new MongoClient(uri, {
                }
             })
 
-            
-
+            app.post("/addToy",async(req,res)=>{
+                console.log(req.body);
+                const data = req.body;
+                console.log(data);
+                const result = await toyCollections.insertOne(data)
+                res.send(result)
+            })
 
 
         }
