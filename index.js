@@ -94,6 +94,17 @@ const client = new MongoClient(uri, {
 
             })
 
+            
+            app.get("/toyDetails/:id",async(req,res)=>{
+                const {id} = req.params;
+                console.log(id,"category");
+                const query = {_id: new ObjectId(id)}
+                console.log(query);
+                const getoyIdData = await toyCollections.findOne(query)
+                res.send(getoyIdData)
+
+            })
+
 
 
         }
